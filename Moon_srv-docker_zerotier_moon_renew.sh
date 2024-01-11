@@ -1,4 +1,5 @@
 #!/bin/bash
+# ZeroTier Moon服务端更新脚本
 
 # 指定工作路径
 work_dir=/mnt/user/appdata/zerotier/zerotier-one
