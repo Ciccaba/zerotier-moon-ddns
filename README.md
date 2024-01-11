@@ -38,3 +38,7 @@ zerotier-cli deorbit a9a8a7a6a5
 zerotier-cli orbit a9a8a7a6a5 a9a8a7a6a5
 service zerotier restart
 ```
+
+## 其它客户端
+这里的实现原理其实很简单。
+理论上，所有客户端都可以通过“退出Moon-加入Moon”的两步操作来刷新为最新的Moon节点状态，因为我暂时不需要在IOS与Android系统下接入ZeroTier网络，所以就不做测试了，有需要的可自行研究。
