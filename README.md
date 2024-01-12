@@ -32,10 +32,13 @@
 
 ## Linux客户端
 可参考以下命令，对不同的Linux系统版本和安装路径，应按实际情况进行调整：
+
 ```
 # 将下列命令中的`a9a8a7a6a5`更改为你当前Moon节点的ID。
 zerotier-cli deorbit a9a8a7a6a5
 zerotier-cli orbit a9a8a7a6a5 a9a8a7a6a5
+
+# 理论上无需重启服务，若遇到更新异常可酌情设置
 service zerotier restart
 ```
 
