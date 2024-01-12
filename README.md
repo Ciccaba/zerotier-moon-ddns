@@ -33,13 +33,27 @@
 ## Linux客户端
 可参考以下命令，对不同的Linux系统版本和安装路径，应按实际情况进行调整：
 
-```
-# 将下列命令中的`a9a8a7a6a5`更改为你当前Moon节点的ID。
-zerotier-cli deorbit a9a8a7a6a5
-zerotier-cli orbit a9a8a7a6a5 a9a8a7a6a5
+```shell
+#!/bin/bash
 
-# 理论上无需重启服务，若遇到更新异常可酌情设置
-service zerotier restart
+# 指定对外域名
+check_domain=moon.example.com
+
+# 获取新的 IP 地址
+new_ip=$(ping -c 1 $check_domain | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
+
+# 读取文件中的旧 IP 地址
+old_ip=$(/root/shell/old.ip| grep -Eo '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | head -n 1)
+
+# 比较新旧 IP 地址是否相同
+if [ "$old_ip" != "$new_ip" ]; then
+    # 将下列命令中的`a9a8a7a6a5`更改为你当前Moon节点的ID。
+    zerotier-cli deorbit a9a8a7a6a5
+    zerotier-cli orbit a9a8a7a6a5 a9a8a7a6a5
+    echo $new_ip > /root/shell/old.ip
+    # 理论上无需重启服务，若遇到更新异常可酌情设置
+    #service zerotier restart
+fi
 ```
 
 ## 其它客户端
